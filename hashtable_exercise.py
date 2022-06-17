@@ -90,3 +90,15 @@ print(sum(average)/len(average))
 # 1.2
 
 print(max(hashmap.get_values()))
+
+# 2.1
+
+print(hashmap['Jan 9'])
+
+# 2.2
+print(hashmap['Jan 4'])
+
+
+#other
+
+print(hashmap.arr)

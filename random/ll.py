@@ -50,7 +50,9 @@ class Dll:
             self.tail = node
             return
 
-        node = Node()
+        node = Node(val,None,self.tail)
+        self.tail.next = node
+        self.tail = node
 
 
 
@@ -59,6 +61,7 @@ list1 = Dll()
 
 list1.node_beginning('hello')
 list1.node_beginning('world')
+list1.node_end('yo')
 list1.print()
 list1.print_reverse()
 

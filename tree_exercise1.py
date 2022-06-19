@@ -1,3 +1,6 @@
+from collections import deque
+from tkinter.tix import Tree
+
 class TreeNode:
     def __init__(self,name,title):
         self.name = name
@@ -5,9 +8,10 @@ class TreeNode:
         self.children = []
         self.parent = None
 
-    def add_children(self,child):
-        child.parent = self
-        self.children.append(child)
+    def add_children(self,*children):
+        for child in children:
+            child.parent = self
+            self.children.append(child)
 
     def generation(self):
         level = 0
@@ -39,31 +43,26 @@ class TreeNode:
         for child in self.children:
             child.print(show)
 
-    def find_child(self,name,title):
-        for child in self.children:
-            if name == child.name and title == child.title:
-                return child
-        for child in self.children:
-            return child.find_child(name,title)
+
+
 
 
 root = TreeNode('Nilupul','CEO')
+CTO = TreeNode('Chinmay','CTO')
+HR_Head = TreeNode('Gels','HR Head')
+Infr_Head = TreeNode('Vishwa','Infrastructure Head')
+App_Head = TreeNode('Aamir','Application Head')
+Recru_Manager = TreeNode('Peter','Recruitement Manager')
+Policy_Manager = TreeNode('Waqas','Policy Manager')
+Cloud_Manager = TreeNode('Dhaval','Cloud Manager')
+App_Manager = TreeNode('Abhijit','App Manager')
 
-def parenting(parent,arr):
-    [parent.add_children(TreeNode(name, title)) for name, title in arr] # arr -> list of tuples
-
-parenting(root,[('Chinmay','CTO'),
-                ('Gels','HR Head')])
-
+root.add_children(CTO,HR_Head)
+CTO.add_children(Infr_Head,App_Head)
+HR_Head.add_children(Recru_Manager,Policy_Manager)
+Infr_Head.add_children(Cloud_Manager,App_Manager)
 
 
-
-parenting(root.find_child('Chinmay','CTO'),[('Vishwa','Infrastructure Head'),
-                                            ('Aamir','Application Head')])
-parenting(root.find_child('Gels','HR Head'),[('Peter','Recruitement Manager'),
-                                             ('Waqas','Policy Manager')])
-parenting(root.find_child('Vishwa','Infrastructure Head'),[('Dhaval','Cloud Manager'),
-                                                           ('Abhijit','App Manager')])
 
 root.print('both')
 

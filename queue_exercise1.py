@@ -27,7 +27,7 @@ def place_order(*orders):
     for order in orders:
         system.enqueue(order)
         print(f'{order} has been added. Queue: {list(system.buffer)}')
-        time.sleep(0.5)
+        time.sleep(0.9)
 
 def serve_order():
     while system.buffer:

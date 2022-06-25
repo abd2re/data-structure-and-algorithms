@@ -62,7 +62,7 @@ Palo_Alto = TreeNode('Palo Alto')
 California.add_children(San_Francisco,Mountain_View,Palo_Alto)
 
 
-root.print(2)
+root.print(3)
 
 
 

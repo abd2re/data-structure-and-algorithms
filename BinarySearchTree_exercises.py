@@ -89,6 +89,29 @@ class BinarySearchTreeNode:
             else:
                 return False
 
+    def delete(self,val):
+        if self == None:
+            return self
+        if val == self.data:
+            if self.left is None:
+                self = self.right
+            elif self.right is None:
+                self = self.left
+            else:
+                temp = self.right.find_min()
+                self.delete(temp)
+                self.data = temp
+        elif val < self.data:
+            if not self.left:
+                return self
+            self.left = self.left.delete(val)
+        else:
+            if not self.right:
+                return self
+            self.right = self.right.delete(val)
+
+        return self
+
 
 def buildTree(list):
     root = BinarySearchTreeNode(list[0])
@@ -105,3 +128,7 @@ print(tree.calculate_sum())
 print(tree.preOrderTraversal())
 print(tree.postOrderTraversal())
 print(tree.search(27))
+
+print(tree.delete(88))
+print(tree.inOrderTraversal())
+

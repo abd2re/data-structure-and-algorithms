@@ -23,12 +23,13 @@ class TreeNode:
         space = ' ' * self.generation() * 3
         prefix = space + '|__' if self.parent else ""
 
-        if self.generation() <= depth:
-            print(prefix + self.location)
+
+        print(prefix + self.location)
 
         for child in self.children:
+            if self.generation() >= depth:
+                break
             child.print(depth)
-
 
 
 root = TreeNode('Global')
@@ -62,7 +63,7 @@ Palo_Alto = TreeNode('Palo Alto')
 California.add_children(San_Francisco,Mountain_View,Palo_Alto)
 
 
-root.print(3)
+root.print(2)
 
 
 
